@@ -1,0 +1,16 @@
+1. Go to the AWS CloudFormation console at https://console.aws.amazon.com/cloudformation and click Create Stack > With new resources
+2. Leave Prepare template setting as-is
+  For Template source select Upload a template file
+  Click Choose file and supply the CloudFormation template
+3. Click Next
+4. Stack Name : <**********>
+5. Parameters --> look parameters and default values  --> Next
+6. Configure stack options --> like tags 
+7. Review the content and click on create stack
+
+1 - There is one EC2 instance deployed per Availability Zone
+2 - Refresh the website several times, note that the EC2 instance and Availability Zone change from among the three available
+3 - Elastic Load Balancing (ELB) is used here. An Application Load Balancer receives each request and distributes it among the available EC2 server instances across Availability Zones.
+    The requests are stateless, and therefore can be routed to any of the available EC2 instances
+4 - The EC2 instances are in an Amazon EC2 Auto Scaling Group . This Auto Scaling Group was configured to maintain three instances, therefore if one instance is detected as unhealthy it will be replaced to maintain three healthy instances.
+    AWS Auto Scaling can also be configured to scale up/down dynamically in response to workload consitions such as CPU utilization or request count.
